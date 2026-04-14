@@ -26,6 +26,78 @@ export default function Home() {
         viewAllLink="/HitCollections"
         endpoint={apiConfig.hitCollectionsEndpoint}
       />
+      <ProductCarousel
+        title="New Arrivals"
+        subtitle="Just dropped. Fresh picks you won't want to miss."
+        viewAllLink="/new-arrivals"
+        endpoint={apiConfig.newArrivalsEndpoint}
+      />
+      <ProductCarousel
+        title="Sarees"
+        subtitle=""
+        viewAllLink="/sarees"
+        endpoint={apiConfig.sareesEndpoint}
+      />
+      <ProductCarousel
+        title="Silk Sarees"
+        subtitle=""
+        viewAllLink="/silk-sarees"
+        endpoint={apiConfig.silkSareesEndpoint}
+      />
+      <ProductCarousel
+        title="Dress"
+        subtitle=""
+        viewAllLink="/dress"
+        endpoint={apiConfig.dressEndpoint}
+      />
+      <ProductCarousel
+        title="Kurtis"
+        subtitle=""
+        viewAllLink="/kurtis"
+        endpoint={apiConfig.kurtisEndpoint}
+      />
+      <ProductCarousel
+        title="Jwellery"
+        subtitle=""
+        viewAllLink="/jwellery"
+        endpoint={apiConfig.jwelleryEndpoint}
+      />
+      <ProductCarousel
+        title="Lehengas"
+        subtitle=""
+        viewAllLink="/lehengas"
+        endpoint={apiConfig.lehengasEndpoint}
+      />
+      <ProductCarousel
+        title="Islamic Wear"
+        subtitle=""
+        viewAllLink="/islamic-wear"
+        endpoint={apiConfig.islamicWearEndpoint}
+      />
+      <ProductCarousel
+        title="Suits and Dresses"
+        subtitle=""
+        viewAllLink="/suits-and-dresses"
+        endpoint={apiConfig.suitsandDressesEndpoint}
+      />
+      <ProductCarousel
+        title="Gowns"
+        subtitle=""
+        viewAllLink="/gowns"
+        endpoint={apiConfig.gownsEndpoint}
+      />
+      <ProductCarousel
+        title="Readymade Blouse"
+        subtitle=""
+        viewAllLink="/readymade-blouse"
+        endpoint={apiConfig.readymadeBlouseEndpoint}
+      />
+      <ProductCarousel
+        title="Kidswear"
+        subtitle=""
+        viewAllLink="/kidswear"
+        endpoint={apiConfig.kidswearEndpoint}
+      />
     </main>
   );
 }

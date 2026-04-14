@@ -110,6 +110,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           src={product.image}
           alt={product.name}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           className={styles.image}
         />
         
@@ -128,7 +129,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             }}
             animate={{ 
               scale: isLiked ? [1, 1.2, 1] : 1,
-              color: isLiked ? "#ff3b30" : "inherit"
+              color: isLiked ? "#ff3b30" : "rgba(0,0,0,0.8)"
             }}
             whileTap={{ scale: 0.8 }}
             transition={{ duration: 0.2 }}

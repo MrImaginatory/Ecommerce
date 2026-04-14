@@ -1,5 +1,17 @@
 {
+  "heroCarouselEndpoint": "/HeroCarousel",
   "trendingEndpoint": "/TrendingProducts",
   "hitCollectionsEndpoint": "/HitCollections",
-  "heroCarouselEndpoint": "/HeroCarousel"
+  "newArrivalsEndpoint": "/NewArrivals",
+  "sareesEndpoint": "/Sarees",
+  "silkSareesEndpoint": "/SilkSarees",
+  "dressEndpoint": "/Dress",
+  "kurtisEndpoint": "/Kurtis",
+  "jwelleryEndpoint": "/Jwellery",
+  "lehengasEndpoint": "/Lehengas",
+  "islamicWearEndpoint": "/IslamicClothing",
+  "suitsandDressesEndpoint": "/SuitsAndDresses",
+  "gownsEndpoint": "/Gowns",
+  "readymadeBlouseEndpoint": "/ReadymadeBlouse",
+  "kidswearEndpoint": "/Kidswear"
 }

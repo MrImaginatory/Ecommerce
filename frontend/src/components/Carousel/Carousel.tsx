@@ -113,6 +113,7 @@ export default function Carousel({ slides = [], endpoint }: CarouselProps) {
                       src={slide.imageSrc}
                       alt={slide.title}
                       fill
+                      sizes="100vw"
                       style={{ objectFit: "cover", objectPosition: "center" }}
                       priority={slide.id === displayedSlides[0].id}
                     />
@@ -136,6 +137,7 @@ export default function Carousel({ slides = [], endpoint }: CarouselProps) {
                       src={slide.imageSrc}
                       alt={slide.title}
                       fill
+                      sizes="100vw"
                       style={{ objectFit: "cover", objectPosition: "center" }}
                       priority={slide.id === displayedSlides[0].id}
                     />
