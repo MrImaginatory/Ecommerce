@@ -37,21 +37,10 @@ export default function RootLayout({
         <ThemeProvider>
           <QueryProvider>
             <Toaster
-              position="bottom-center"
+              position="top-right"
               toastOptions={{
                 duration: 3000,
-                style: {
-                  background: "rgba(25, 25, 25, 0.8)",
-                  color: "#fff",
-                  backdropFilter: "blur(10px)",
-                  WebkitBackdropFilter: "blur(10px)",
-                  borderRadius: "12px",
-                  padding: "16px 24px",
-                  fontSize: "14px",
-                  fontWeight: "500",
-                  letterSpacing: "-0.01em",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                },
+                className: "apple-toast",
               }}
             />
             <Navbar />

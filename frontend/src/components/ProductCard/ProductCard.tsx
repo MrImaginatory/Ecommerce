@@ -26,19 +26,19 @@ interface ProductCardProps {
 }
 
 const cartMessages = [
-  "Added to your collection! 🍎",
-  "Excellent choice! That's hand-picked for you. ✨",
-  "Hand-picked and ready to ship! 📦",
-  "A premium choice for a premium user. 💎",
-  "Your cart just got a major upgrade! 🚀"
+  "Added to your collection!",
+  "Excellent choice! That's hand-picked for you.",
+  "Hand-picked and ready to ship!",
+  "A premium choice for a premium user.",
+  "Your cart just got a major upgrade!"
 ];
 
 const wishlistMessages = [
-  "Saved! Your taste is absolutely impeccable. ❤️",
-  "Added to your wishlist. A goal worth chasing! 🎯",
-  "Great eye! We'll keep this ready for you. ⭐",
-  "Dream big! This is now on your list. ✨",
-  "Impeccable choice! Wishlist updated. 💎"
+  "Saved! Your taste is absolutely impeccable.",
+  "Added to your wishlist. A goal worth chasing!",
+  "Great eye! We'll keep this ready for you.",
+  "Dream big! This is now on your list.",
+  "Impeccable choice! Wishlist updated."
 ];
 
 export default function ProductCard({ product }: ProductCardProps) {
@@ -62,7 +62,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     
     if (newLikedState) {
       toast.success(getRandomMessage(wishlistMessages), {
-        icon: '❤️',
+        icon: <Heart size={18} color="#ff3b30" fill="#ff3b30" />,
       });
     }
   };
@@ -93,7 +93,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     
     // Show delightful toast
     toast.success(getRandomMessage(cartMessages), {
-      icon: '🛒',
+      icon: <ShoppingCart size={18} color="#0071e3" />,
     });
 
     // Reset after some time

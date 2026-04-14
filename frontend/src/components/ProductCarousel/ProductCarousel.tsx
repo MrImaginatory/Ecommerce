@@ -4,21 +4,49 @@ import React, { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "./ProductCarousel.module.css";
 import ProductCard, { Product } from "../ProductCard/ProductCard";
+import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
 
 interface ProductCarouselProps {
-  products: Product[];
+  products?: Product[];
   title: string;
+  subtitle?: string;
+  viewAllLink?: string;
+  endpoint?: string;
 }
 
-export default function ProductCarousel({ products, title }: ProductCarouselProps) {
-  // Requirement: Maximum 15 products
-  const displayedProducts = products.slice(0, 15);
+export default function ProductCarousel({ 
+  products = [], 
+  title, 
+  subtitle, 
+  viewAllLink = "#",
+  endpoint
+}: ProductCarouselProps) {
+  const { data: apiProducts, isLoading, error } = useQuery<Product[]>({
+    queryKey: ["products", endpoint],
+    queryFn: async () => {
+      if (!endpoint) return [];
+      
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
+      const fullUrl = endpoint.startsWith("http") 
+        ? endpoint 
+        : `${baseUrl}${endpoint.startsWith("/") ? "" : "/"}${endpoint}`;
+        
+      const res = await fetch(fullUrl);
+      if (!res.ok) throw new Error("Failed to fetch products");
+      return res.json();
+    },
+    enabled: !!endpoint,
+  });
+
+  const finalProducts = (endpoint ? apiProducts : products) || [];
+  const displayedProducts = finalProducts.slice(0, 15);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
-    slidesToScroll: 1, // Requirement: One product should slide
+    slidesToScroll: 1,
     containScroll: "trimSnaps",
   });
 
@@ -46,47 +74,69 @@ export default function ProductCarousel({ products, title }: ProductCarouselProp
     emblaApi.on("reInit", onSelect);
   }, [emblaApi, onSelect]);
 
+  // If there's an error and no static fallback, we might want to hide the carousel
+  if (error && products.length === 0) {
+    return null;
+  }
+
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <h2 className={styles.title}>{title}</h2>
-        <div className={styles.controls}>
-          <button
-            className={styles.arrowButton}
-            onClick={scrollPrev}
-            disabled={!prevBtnEnabled}
-            aria-label="Previous products"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          <button
-            className={styles.arrowButton}
-            onClick={scrollNext}
-            disabled={!nextBtnEnabled}
-            aria-label="Next products"
-          >
-            <ChevronRight size={24} />
-          </button>
+        <div className={styles.titleGroup}>
+          <h2 className={styles.title}>{title}</h2>
+          {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
         </div>
+        {!isLoading && displayedProducts.length > 0 && (
+          <div className={styles.controls}>
+            <button
+              className={styles.arrowButton}
+              onClick={scrollPrev}
+              disabled={!prevBtnEnabled}
+              aria-label="Previous products"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button
+              className={styles.arrowButton}
+              onClick={scrollNext}
+              disabled={!nextBtnEnabled}
+              aria-label="Next products"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
+        )}
       </div>
 
       <div className={styles.embla} ref={emblaRef}>
         <div className={styles.embla__container}>
-          {displayedProducts.map((product) => (
-            <div className={styles.embla__slide} key={product.id}>
-              <ProductCard product={product} />
-            </div>
-          ))}
-          
-          {/* Requirement: View All button at the end */}
-          <div className={styles.viewAllSlide}>
-            <div className={styles.viewAllContent}>
-              <h3 className="tile-heading">Want to see more?</h3>
-              <Link href="/trending" className={styles.viewAllButton}>
-                View all Trending products
-              </Link>
-            </div>
-          </div>
+          {isLoading ? (
+            // Show 4 skeletons while loading
+            Array.from({ length: 4 }).map((_, i) => (
+              <div className={styles.embla__slide} key={`skeleton-${i}`}>
+                <ProductCardSkeleton />
+              </div>
+            ))
+          ) : (
+            <>
+              {displayedProducts.map((product) => (
+                <div className={styles.embla__slide} key={product.id}>
+                  <ProductCard product={product} />
+                </div>
+              ))}
+              
+              {displayedProducts.length > 0 && (
+                <div className={styles.viewAllSlide}>
+                  <div className={styles.viewAllContent}>
+                    <h3 className="tile-heading">Want to see more?</h3>
+                    <Link href={viewAllLink} className={styles.viewAllButton}>
+                      View all {title}
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </>
+          )}
         </div>
       </div>
     </section>

@@ -8,15 +8,28 @@
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   margin-bottom: var(--spacing-24);
   padding: 0 var(--spacing-24);
+}
+
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
 }
 
 .title {
   font-size: 34px;
   font-weight: 600;
   color: var(--color-text-primary);
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-size: 17px;
+  color: var(--color-text-tertiary);
+  font-weight: 400;
 }
 
 .controls {

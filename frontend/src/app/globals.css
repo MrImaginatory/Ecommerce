@@ -54,6 +54,11 @@
   --theme-overlay: rgba(0, 0, 0, 0.4);
   /* Interactive Variants */
   --apple-accent-pressed: #005bb7;
+
+  /* Toast Variables */
+  --toast-bg: rgba(255, 255, 255, 0.85);
+  --toast-color: var(--apple-near-black);
+  --toast-border: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme='dark'] {
@@ -66,6 +71,11 @@
   --nav-border: rgba(255, 255, 255, 0.1);
   --theme-overlay: rgba(0, 0, 0, 0.6);
   --apple-gray: #161617; /* Darker variant for accordion backgrounds */
+
+  /* Toast Variables (Dark) */
+  --toast-bg: rgba(25, 25, 25, 0.85);
+  --toast-color: var(--apple-white);
+  --toast-border: rgba(255, 255, 255, 0.15);
 }
 
 * {
@@ -174,7 +184,19 @@ img {
   display: none;
 }
 
-html {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+/* Apple-style Toast Notifications */
+.apple-toast {
+  background: var(--toast-bg) !important;
+  color: var(--toast-color) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-radius: 12px !important;
+  padding: 12px 20px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em !important;
+  border: 1px solid var(--toast-border) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+  margin-top: 20px !important;
 }
+

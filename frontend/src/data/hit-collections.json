@@ -1,0 +1,82 @@
+[
+  {
+    "id": "h1",
+    "name": "Leather Link Case",
+    "price": 59,
+    "image": "https://images.unsplash.com/photo-1603539947678-cd3954ed515d?auto=format&fit=crop&q=80&w=800",
+    "link": "/product/leather-link-case",
+    "tags": ["premium", "bestseller"],
+    "stockQty": 50,
+    "maxOrderQty": 5
+  },
+  {
+    "id": "h2",
+    "name": "MagSafe Battery Pack",
+    "price": 99,
+    "image": "https://images.unsplash.com/photo-1615663248861-2446a8555090?auto=format&fit=crop&q=80&w=800",
+    "link": "/product/magsafe-power",
+    "tags": ["ready to ship"],
+    "stockQty": 20,
+    "maxOrderQty": 2
+  },
+  {
+    "id": "h3",
+    "name": "Studio Display",
+    "price": 1599,
+    "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&q=80&w=800",
+    "link": "/product/studio-display",
+    "tags": ["studio gear"],
+    "stockQty": 5,
+    "maxOrderQty": 1
+  },
+  {
+    "id": "h4",
+    "name": "Magic Keyboard",
+    "price": 99,
+    "image": "https://images.unsplash.com/photo-1594980596271-e33bc87e597c?auto=format&fit=crop&q=80&w=800",
+    "link": "/product/magic-keyboard",
+    "tags": ["ready to ship"],
+    "stockQty": 100,
+    "maxOrderQty": 10
+  },
+  {
+    "id": "h5",
+    "name": "AirTag 4-Pack",
+    "price": 99,
+    "image": "https://images.unsplash.com/photo-1625948515291-6961309bb091?auto=format&fit=crop&q=80&w=800",
+    "link": "/product/airtag-4pack",
+    "tags": ["trending"],
+    "stockQty": 40,
+    "maxOrderQty": 4
+  },
+  {
+    "id": "h6",
+    "name": "USB-C To Lightning",
+    "price": 29,
+    "image": "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&q=80&w=800",
+    "link": "/product/usbc-lightning",
+    "tags": ["essential"],
+    "stockQty": 200,
+    "maxOrderQty": 20
+  },
+  {
+    "id": "h7",
+    "name": "HomePod Mini",
+    "price": 99,
+    "image": "https://images.unsplash.com/photo-1707306304033-66f827cf6646?auto=format&fit=crop&q=80&w=800",
+    "link": "/product/homepod-mini",
+    "tags": ["bestseller"],
+    "stockQty": 30,
+    "maxOrderQty": 3
+  },
+  {
+    "id": "h8",
+    "name": "Apple Pencil Pro",
+    "price": 129,
+    "image": "https://images.unsplash.com/photo-1600294037530-9b6264d84fd2?auto=format&fit=crop&q=80&w=800",
+    "link": "/product/pencil-pro",
+    "tags": ["new arrival"],
+    "stockQty": 15,
+    "maxOrderQty": 2
+  }
+]

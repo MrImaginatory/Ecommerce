@@ -1,0 +1,85 @@
+.skeleton {
+  background-color: var(--apple-gray);
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.image {
+  aspect-ratio: 1 / 1;
+  background-color: #eee;
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  padding: var(--spacing-20);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.titleLine {
+  height: 20px;
+  background-color: #e5e5e5;
+  border-radius: 4px;
+  width: 80%;
+}
+
+.titleLineShort {
+  height: 20px;
+  background-color: #e5e5e5;
+  border-radius: 4px;
+  width: 50%;
+}
+
+.price {
+  height: 18px;
+  background-color: #e5e5e5;
+  border-radius: 4px;
+  width: 30%;
+  margin-top: var(--spacing-4);
+}
+
+.shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: shimmer 2s infinite linear;
+}
+
+@keyframes shimmer {
+  to {
+    transform: translateX(50%);
+  }
+}
+
+[data-theme='dark'] .image {
+  background-color: #272729;
+}
+
+[data-theme='dark'] .titleLine,
+[data-theme='dark'] .titleLineShort,
+[data-theme='dark'] .price {
+  background-color: #3a3a3c;
+}
+
+[data-theme='dark'] .shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+}
