@@ -22,7 +22,7 @@
 /* Tier 1: Offer Banner */
 .offerBanner {
   background-color: var(--apple-gray);
-  color: var(--apple-near-black);
+  color: var(--color-text-primary);
   height: 36px;
   display: flex;
   align-items: center;

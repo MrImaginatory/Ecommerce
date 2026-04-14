@@ -166,3 +166,27 @@ img {
   height: auto;
   display: block;
 }
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--apple-blue);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--apple-link-blue);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--apple-blue) transparent;
+}
