@@ -4,16 +4,16 @@
   background-color: var(--apple-gray);
   border-radius: var(--radius-large);
   overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease; /* Removed transform from transition */
   height: 100%;
   width: 100%;
-  text-decoration: none;
+  text-decoration: none !important; /* Force removal of underline */
   color: inherit;
   position: relative;
 }
 
 .card:hover {
-  transform: translateY(-8px);
+  text-decoration: none !important;
   box-shadow: var(--apple-card-shadow);
 }
 
@@ -85,9 +85,16 @@
 
 .priceContainer {
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  justify-content: space-between;
   gap: var(--spacing-8);
   margin-top: auto;
+}
+
+.priceInfo {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-8);
 }
 
 .currentPrice {
@@ -101,4 +108,128 @@
   font-weight: 400;
   color: var(--color-text-tertiary);
   text-decoration: line-through;
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--apple-near-black);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.iconButton:hover {
+  transform: scale(1.1);
+  background-color: #ffffff;
+}
+
+.iconButton:active {
+  transform: scale(0.95);
+}
+
+.heartButton {
+  position: absolute;
+  top: var(--spacing-10);
+  right: var(--spacing-10);
+  z-index: 15;
+}
+
+.cartButton {
+  background-color: var(--apple-gray);
+  backdrop-filter: none;
+  box-shadow: none;
+  width: 40px;
+  height: 40px;
+}
+
+.cartButton:hover {
+  background-color: var(--apple-blue);
+  color: var(--apple-white);
+}
+
+:global([data-theme='dark']) .iconButton {
+  background-color: rgba(25, 25, 25, 0.8);
+  color: var(--apple-white);
+}
+
+.stepperContainer {
+  display: flex;
+  align-items: center;
+  background-color: var(--apple-gray);
+  border-radius: var(--radius-pill);
+  padding: 2px;
+  gap: var(--spacing-4);
+  height: 40px;
+}
+
+.stepBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  transition: background-color 0.2s ease;
+}
+
+.stepBtn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.stepBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  background-color: transparent !important;
+}
+
+.qtyDisplay {
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 24px;
+  text-align: center;
+  color: var(--color-text-primary);
+}
+
+.confirmAddBtn {
+  background-color: var(--apple-blue);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 0 var(--spacing-15);
+  height: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.confirmAddBtn:hover {
+  background-color: #0077ed;
+  transform: scale(1.05);
+}
+
+.confirmAddBtn:active {
+  transform: scale(0.95);
+}
+
+.added {
+  background-color: #34c759 !important; /* Apple Green */
+  color: white !important;
+}
+
+:global([data-theme='dark']) .stepBtn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }

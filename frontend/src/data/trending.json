@@ -6,7 +6,9 @@
     "salePrice": 899,
     "image": "https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&q=80&w=800",
     "link": "/product/iphone-15-pro",
-    "tags": ["trending", "quick selling"]
+    "tags": ["trending", "quick selling"],
+    "stockQty": 5,
+    "maxOrderQty": 2
   },
   {
     "id": "p2",
@@ -14,7 +16,9 @@
     "price": 1099,
     "image": "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&q=80&w=800",
     "link": "/product/macbook-air-m3",
-    "tags": ["ready to ship"]
+    "tags": ["ready to ship"],
+    "stockQty": 10,
+    "maxOrderQty": 5
   },
   {
     "id": "p3",
@@ -23,7 +27,9 @@
     "salePrice": 349,
     "image": "https://images.unsplash.com/photo-1618366712214-8c07623ce507?auto=format&fit=crop&q=80&w=800",
     "link": "/product/sony-wh1000xm5",
-    "tags": ["last few left", "trending"]
+    "tags": ["last few left", "trending"],
+    "stockQty": 3,
+    "maxOrderQty": 2
   },
   {
     "id": "p4",
@@ -31,7 +37,9 @@
     "price": 799,
     "image": "https://images.unsplash.com/photo-1695754593259-3ccdf2ad2eb5?auto=format&fit=crop&q=80&w=800",
     "link": "/product/watch-ultra-2",
-    "tags": ["ready to ship"]
+    "tags": ["ready to ship"],
+    "stockQty": 12,
+    "maxOrderQty": 3
   },
   {
     "id": "p5",
@@ -40,7 +48,9 @@
     "salePrice": 699,
     "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=800",
     "link": "/product/ipad-pro-m2",
-    "tags": ["quick selling"]
+    "tags": ["quick selling"],
+    "stockQty": 8,
+    "maxOrderQty": 4
   },
   {
     "id": "p6",
@@ -49,7 +59,9 @@
     "salePrice": 199,
     "image": "https://images.unsplash.com/photo-1600294037530-9b6264d84fd2?auto=format&fit=crop&q=80&w=800",
     "link": "/product/airpods-pro-2",
-    "tags": ["trending"]
+    "tags": ["trending"],
+    "stockQty": 20,
+    "maxOrderQty": 10
   },
   {
     "id": "p7",
@@ -57,7 +69,9 @@
     "price": 1299,
     "image": "https://images.unsplash.com/photo-1707306304033-66f827cf6646?auto=format&fit=crop&q=80&w=800",
     "link": "/product/s24-ultra",
-    "tags": ["ready to ship", "trending"]
+    "tags": ["ready to ship", "trending"],
+    "stockQty": 15,
+    "maxOrderQty": 3
   },
   {
     "id": "p8",
@@ -65,7 +79,9 @@
     "price": 349,
     "image": "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&q=80&w=800",
     "link": "/product/switch-oled",
-    "tags": ["last few left"]
+    "tags": ["last few left"],
+    "stockQty": 4,
+    "maxOrderQty": 2
   },
   {
     "id": "p9",
@@ -74,7 +90,9 @@
     "salePrice": 129,
     "image": "https://images.unsplash.com/photo-1594980596271-e33bc87e597c?auto=format&fit=crop&q=80&w=800",
     "link": "/product/kindle",
-    "tags": ["quick selling"]
+    "tags": ["quick selling"],
+    "stockQty": 10,
+    "maxOrderQty": 5
   },
   {
     "id": "p10",
@@ -82,7 +100,9 @@
     "price": 99,
     "image": "https://images.unsplash.com/photo-1625948515291-6961309bb091?auto=format&fit=crop&q=80&w=800",
     "link": "/product/mx-master-3s",
-    "tags": ["ready to ship"]
+    "tags": ["ready to ship"],
+    "stockQty": 50,
+    "maxOrderQty": 10
   },
   {
     "id": "p11",
@@ -91,7 +111,9 @@
     "salePrice": 379,
     "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&q=80&w=800",
     "link": "/product/bose-qc-ultra",
-    "tags": ["trending"]
+    "tags": ["trending"],
+    "stockQty": 6,
+    "maxOrderQty": 2
   },
   {
     "id": "p12",
@@ -99,7 +121,9 @@
     "price": 549,
     "image": "https://images.unsplash.com/photo-1662584144413-436329061009?auto=format&fit=crop&q=80&w=800",
     "link": "/product/steam-deck",
-    "tags": ["quick selling", "last few left"]
+    "tags": ["quick selling", "last few left"],
+    "stockQty": 2,
+    "maxOrderQty": 1
   },
   {
     "id": "p13",
@@ -108,7 +132,9 @@
     "salePrice": 649,
     "image": "https://images.unsplash.com/photo-1603539947678-cd3954ed515d?auto=format&fit=crop&q=80&w=800",
     "link": "/product/dyson-v15",
-    "tags": ["trending"]
+    "tags": ["trending"],
+    "stockQty": 7,
+    "maxOrderQty": 2
   },
   {
     "id": "p14",
@@ -116,7 +142,9 @@
     "price": 399,
     "image": "https://images.unsplash.com/photo-1563298717-380eb7c7f551?auto=format&fit=crop&q=80&w=800",
     "link": "/product/gopro-12",
-    "tags": ["ready to ship"]
+    "tags": ["ready to ship"],
+    "stockQty": 25,
+    "maxOrderQty": 5
   },
   {
     "id": "p15",
@@ -125,7 +153,9 @@
     "salePrice": 129,
     "image": "https://images.unsplash.com/photo-1615663248861-2446a8555090?auto=format&fit=crop&q=80&w=800",
     "link": "/product/razer-mouse",
-    "tags": ["quick selling"]
+    "tags": ["quick selling"],
+    "stockQty": 30,
+    "maxOrderQty": 10
   },
   {
     "id": "p16",
@@ -133,6 +163,9 @@
     "price": 100,
     "image": "https://images.unsplash.com/photo-1505156868547-9b49f4df4e04?auto=format&fit=crop&q=80&w=800",
     "link": "/product/p16",
-    "tags": ["trending"]
+    "tags": ["trending"],
+    "stockQty": 10,
+    "maxOrderQty": 5
   }
 ]
+

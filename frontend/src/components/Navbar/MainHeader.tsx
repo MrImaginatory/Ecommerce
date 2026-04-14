@@ -1,11 +1,13 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
 import { ShoppingBag, Heart, User, Sun, Moon } from "lucide-react";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "@/components/Theme/ThemeProvider";
 import { useQuery } from "@tanstack/react-query";
+import { useCartStore } from "@/store/useCartStore";
 
 interface SiteConfig {
   siteLogo: string;
@@ -17,6 +19,12 @@ interface SiteConfig {
 
 export default function MainHeader() {
   const { theme, toggleTheme } = useTheme();
+  const totalItems = useCartStore((state) => state.getTotalItems());
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const { data: config } = useQuery<SiteConfig>({
     queryKey: ["site-config"],
@@ -69,8 +77,13 @@ export default function MainHeader() {
           <button className={`${styles.iconButton} ${styles.desktopOnlyIcon}`} aria-label="Favorites">
             <Heart size={18} strokeWidth={1.5} />
           </button>
-          <button className={`${styles.iconButton} ${styles.desktopOnlyIcon}`} aria-label="Shopping Bag">
+          <button className={`${styles.iconButton} ${styles.desktopOnlyIcon} ${styles.cartButton}`} aria-label="Shopping Bag">
             <ShoppingBag size={18} strokeWidth={1.5} />
+            {mounted && totalItems > 0 && (
+              <span className={styles.cartBadge}>
+                {totalItems > 99 ? "99+" : totalItems}
+              </span>
+            )}
           </button>
         </div>
       </div>
