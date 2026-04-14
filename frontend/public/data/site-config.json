@@ -1,5 +1,7 @@
 {
   "siteLogo": "/images/logo.svg",
-  "siteName": "Apple Store",
-  "altText": "Apple Logo"
+  "siteName": "Asgardia",
+  "altText": "Asgardia Logo",
+  "showName": false,
+  "favicon": "/images/favicon.svg"
 }

@@ -77,6 +77,15 @@
   flex-shrink: 0;
 }
 
+.siteName {
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-left: 10px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
 .iconButton {
   background: transparent;
   color: var(--color-text-primary);
