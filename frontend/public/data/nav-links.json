@@ -1,0 +1,13 @@
+[
+  { "id": 1, "label": "Store", "href": "/store" },
+  { "id": 2, "label": "Mac", "href": "/mac" },
+  { "id": 3, "label": "iPad", "href": "/ipad" },
+  { "id": 4, "label": "iPhone", "href": "/iphone" },
+  { "id": 5, "label": "Watch", "href": "/watch" },
+  { "id": 6, "label": "Vision", "href": "/vision" },
+  { "id": 7, "label": "AirPods", "href": "/airpods" },
+  { "id": 8, "label": "TV & Home", "href": "/tv-home" },
+  { "id": 9, "label": "Entertainment", "href": "/entertainment" },
+  { "id": 10, "label": "Accessories", "href": "/accessories" },
+  { "id": 11, "label": "Support", "href": "/support" }
+]

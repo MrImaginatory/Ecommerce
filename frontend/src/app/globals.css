@@ -1,0 +1,165 @@
+:root {
+  /* Colors - Primary */
+  --apple-black: #000000;
+  --apple-gray: #f5f5f7;
+  --apple-near-black: #1d1d1f;
+  --apple-white: #ffffff;
+
+  /* Colors - Interactive */
+  --apple-blue: #0071e3;
+  --apple-link-blue: #0066cc;
+  --apple-bright-blue: #2997ff;
+
+  /* Colors - Text */
+  --color-text-primary: var(--apple-near-black);
+  --color-text-secondary: rgba(0, 0, 0, 0.8);
+  --color-text-tertiary: rgba(0, 0, 0, 0.48);
+
+  /* Surface & Dark Variants */
+  --apple-surface-1: #272729;
+  --apple-surface-2: #262628;
+  --apple-surface-3: #28282a;
+  --apple-surface-4: #2a2a2d;
+  --apple-surface-5: #242426;
+
+  /* Shadows */
+  --apple-card-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+
+  /* Radius Scale */
+  --radius-micro: 5px;
+  --radius-standard: 8px;
+  --radius-comfortable: 11px;
+  --radius-large: 12px;
+  --radius-pill: 980px;
+
+  /* Spacing System (8px based) */
+  --spacing-2: 2px;
+  --spacing-4: 4px;
+  --spacing-5: 5px;
+  --spacing-6: 6px;
+  --spacing-7: 7px;
+  --spacing-8: 8px;
+  --spacing-9: 9px;
+  --spacing-10: 10px;
+  --spacing-11: 11px;
+  --spacing-14: 14px;
+  --spacing-15: 15px;
+  --spacing-17: 17px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+
+  /* Dynamic Vars (Defaults) */
+  --background: var(--apple-white);
+  --foreground: var(--apple-near-black);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--apple-black);
+    --foreground: var(--apple-white);
+    --color-text-primary: var(--apple-white);
+    --color-text-secondary: rgba(255, 255, 255, 0.8);
+    --color-text-tertiary: rgba(255, 255, 255, 0.48);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.47;
+  letter-spacing: -0.022em; /* Default negative tracking */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Section Rhythm Classes */
+.section-light {
+  background-color: var(--apple-gray);
+  color: var(--apple-near-black);
+  --color-text-primary: var(--apple-near-black);
+  --color-text-secondary: rgba(0, 0, 0, 0.8);
+}
+
+.section-dark {
+  background-color: var(--apple-black);
+  color: var(--apple-white);
+  --color-text-primary: var(--apple-white);
+  --color-text-secondary: rgba(255, 255, 255, 0.8);
+}
+
+/* Typography Helpers - SF Pro Optical Sizing Emulation */
+h1, .display-hero {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.07;
+  letter-spacing: -0.028em;
+}
+
+h2, .section-heading {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.10;
+  letter-spacing: -0.025em;
+}
+
+h3, .tile-heading {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.14;
+  letter-spacing: 0.007em;
+}
+
+.body-text {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.47;
+  letter-spacing: -0.022em;
+}
+
+a {
+  color: var(--apple-link-blue);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.section-dark a {
+  color: var(--apple-bright-blue);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font: inherit;
+  transition: all 0.2s ease;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

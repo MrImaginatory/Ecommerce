@@ -1,0 +1,121 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Tier 1: Offer Banner */
+.offerBanner {
+  background-color: var(--apple-gray);
+  color: var(--apple-near-black);
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  padding: 0 var(--spacing-24);
+}
+
+.offerBanner a {
+  color: var(--apple-link-blue);
+  margin-left: var(--spacing-8);
+}
+
+/* Tier 2: Main Header */
+.mainHeader {
+  height: 48px;
+  background-color: rgba(0, 0, 0, 0.82);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--spacing-24);
+  color: var(--apple-white);
+}
+
+.headerContent {
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-24);
+}
+
+.iconButton {
+  background: transparent;
+  color: var(--apple-white);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.iconButton:hover {
+  opacity: 1;
+}
+
+.iconButton:focus-visible {
+  outline: 2px solid var(--apple-blue);
+  outline-offset: 4px;
+}
+
+/* Tier 3: Global Nav (Dynamic Links) */
+.globalNav {
+  height: 44px;
+  background-color: rgba(0, 0, 0, 0.82);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--spacing-24);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navLinks {
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.navLink {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--apple-white);
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  opacity: 1;
+  text-decoration: none !important;
+}
+
+/* Loading/Error states */
+.loading, .error {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+}
