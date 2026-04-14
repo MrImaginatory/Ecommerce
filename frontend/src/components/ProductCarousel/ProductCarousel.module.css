@@ -1,0 +1,110 @@
+.section {
+  padding: 80px 0;
+  background-color: var(--background);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: var(--spacing-24);
+  padding: 0 var(--spacing-24);
+}
+
+.title {
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.controls {
+  display: flex;
+  gap: var(--spacing-10);
+}
+
+.arrowButton {
+  background-color: var(--apple-gray);
+  color: var(--color-text-primary);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.arrowButton:hover {
+  background-color: #e8e8ed;
+}
+
+.arrowButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.embla {
+  overflow: hidden;
+  padding: 0 var(--spacing-24);
+}
+
+.embla__container {
+  display: flex;
+  gap: var(--spacing-20);
+}
+
+.embla__slide {
+  flex: 0 0 280px; /* Fixed width for consistency */
+  min-width: 0;
+}
+
+.viewAllSlide {
+  flex: 0 0 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--apple-gray);
+  border-radius: var(--radius-large);
+  align-self: stretch; /* Ensure it matches the height of the product cards */
+}
+
+.viewAllContent {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-14);
+  padding: var(--spacing-24);
+  height: 100%; /* Take full height of slide to allow internal vertical centering */
+}
+
+.viewAllButton {
+  background-color: var(--apple-blue);
+  color: var(--apple-white);
+  padding: var(--spacing-10) var(--spacing-20);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.viewAllButton:hover {
+  background-color: var(--apple-accent-pressed);
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 60px 0;
+  }
+  
+  .title {
+    font-size: 28px;
+  }
+  
+  .embla__slide, .viewAllSlide {
+    flex: 0 0 220px;
+  }
+}

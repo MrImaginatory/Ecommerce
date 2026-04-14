@@ -4,16 +4,17 @@ import React, { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import styles from "./Carousel.module.css";
+import Link from "next/link";
 import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface SlideData {
+export interface SlideData {
   id: string;
   title: string;
-  subtitle: string;
+  showTitle: boolean;
   imageSrc: string;
-  theme: "light" | "dark"; // Controls text accessibility
-  ctaLabel?: string;
-  ctaLink?: string;
+  ctaLink: string;
+  theme: "light" | "dark";
 }
 
 interface CarouselProps {
@@ -21,6 +22,9 @@ interface CarouselProps {
 }
 
 export default function Carousel({ slides }: CarouselProps) {
+  // Enforce maximum 10 items rule
+  const displayedSlides = slides.slice(0, 10);
+
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     Autoplay({ delay: 5000, stopOnInteraction: false }),
   ]);
@@ -46,58 +50,94 @@ export default function Carousel({ slides }: CarouselProps) {
     [emblaApi]
   );
 
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  if (displayedSlides.length === 0) return null;
+
   return (
     <section className={styles.embla} dir="ltr">
       <div className={styles.embla__viewport} ref={emblaRef}>
         <div className={styles.embla__container}>
-          {slides.map((slide) => (
+          {displayedSlides.map((slide) => (
             <div className={styles.embla__slide} key={slide.id}>
-              <div
-                className={`${styles.slideContent} ${
-                  slide.theme === "dark" ? "section-dark" : "section-light"
-                }`}
-              >
-                <div className={styles.imageWrapper}>
-                  <Image
-                    src={slide.imageSrc}
-                    alt={slide.title}
-                    fill
-                    style={{ objectFit: "cover", objectPosition: "center" }}
-                    priority={slide.id === slides[0].id}
-                  />
-                  {/* Subtle overlay for text legibility */}
-                  <div className={styles.imageOverlay} />
-                </div>
+              {slide.ctaLink ? (
+                <Link
+                  href={slide.ctaLink}
+                  className={`${styles.slideContent} ${
+                    slide.theme === "dark" ? "section-dark" : "section-light"
+                  }`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <div className={styles.imageWrapper}>
+                    <Image
+                      src={slide.imageSrc}
+                      alt={slide.title}
+                      fill
+                      style={{ objectFit: "cover", objectPosition: "center" }}
+                      priority={slide.id === displayedSlides[0].id}
+                    />
+                    <div className={styles.imageOverlay} />
+                  </div>
 
-                <div className={styles.textContent}>
-                  {/* Using typography classes defined in globals.css */}
-                  <h1 className="display-hero">{slide.title}</h1>
-                  <p className="body-text">{slide.subtitle}</p>
-                  {slide.ctaLabel && slide.ctaLink && (
-                    <a
-                      href={slide.ctaLink}
-                      style={{
-                        backgroundColor: "var(--apple-blue)",
-                        color: "var(--apple-white)",
-                        padding: "var(--spacing-10) var(--spacing-20)",
-                        borderRadius: "var(--radius-pill)",
-                        fontWeight: 600,
-                        marginTop: "var(--spacing-8)",
-                        marginBottom: "var(--spacing-8)",
-                      }}
-                    >
-                      {slide.ctaLabel}
-                    </a>
-                  )}
+                  <div className={styles.textContent}>
+                    {slide.showTitle && (
+                      <h1 className="display-hero">{slide.title}</h1>
+                    )}
+                  </div>
+                </Link>
+              ) : (
+                <div
+                  className={`${styles.slideContent} ${
+                    slide.theme === "dark" ? "section-dark" : "section-light"
+                  }`}
+                >
+                  <div className={styles.imageWrapper}>
+                    <Image
+                      src={slide.imageSrc}
+                      alt={slide.title}
+                      fill
+                      style={{ objectFit: "cover", objectPosition: "center" }}
+                      priority={slide.id === displayedSlides[0].id}
+                    />
+                    <div className={styles.imageOverlay} />
+                  </div>
+
+                  <div className={styles.textContent}>
+                    {slide.showTitle && (
+                      <h1 className="display-hero">{slide.title}</h1>
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           ))}
         </div>
       </div>
 
+      <button
+        className={`${styles.arrowButton} ${styles.arrowButtonPrev}`}
+        onClick={scrollPrev}
+        aria-label="Previous slide"
+      >
+        <ChevronLeft size={24} />
+      </button>
+
+      <button
+        className={`${styles.arrowButton} ${styles.arrowButtonNext}`}
+        onClick={scrollNext}
+        aria-label="Next slide"
+      >
+        <ChevronRight size={24} />
+      </button>
+
       <div className={styles.dotsWrapper}>
-        {slides.map((_, index) => (
+        {displayedSlides.map((_, index) => (
           <button
             key={index}
             onClick={() => scrollToIndex(index)}

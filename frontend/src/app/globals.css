@@ -52,6 +52,8 @@
   --nav-bg: rgba(255, 255, 255, 0.82);
   --nav-border: rgba(0, 0, 0, 0.1);
   --theme-overlay: rgba(0, 0, 0, 0.4);
+  /* Interactive Variants */
+  --apple-accent-pressed: #005bb7;
 }
 
 [data-theme='dark'] {
@@ -167,26 +169,12 @@ img {
   display: block;
 }
 
-/* Custom Scrollbar Styling */
+/* Global Scrollbar Hiding */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--apple-blue);
-  border-radius: var(--radius-pill);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--apple-link-blue);
+  display: none;
 }
 
 html {
-  scrollbar-width: thin;
-  scrollbar-color: var(--apple-blue) transparent;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

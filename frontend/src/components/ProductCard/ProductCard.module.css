@@ -1,0 +1,159 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--apple-gray);
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--apple-card-shadow);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: var(--apple-gray);
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.likeButton {
+  position: absolute;
+  bottom: var(--spacing-4);
+  left: var(--spacing-4);
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.likeButton:hover {
+  transform: scale(1.1);
+}
+
+.likeButton:active {
+  transform: scale(0.9);
+}
+
+.tagContainer {
+  position: absolute;
+  top: var(--spacing-10);
+  left: var(--spacing-10);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  z-index: 10;
+}
+
+.tag {
+  padding: var(--spacing-2) var(--spacing-8);
+  border-radius: var(--radius-pill);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tagTrending {
+  background-color: var(--apple-blue);
+  color: var(--apple-white);
+}
+
+.tagDefault {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.content {
+  padding: var(--spacing-17);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  flex-grow: 1;
+}
+
+.productName {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  min-height: 44px; /* Ensure enough touch target height */
+}
+
+.priceWrapper {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-8);
+}
+
+.cartButton {
+  background-color: var(--apple-gray);
+  color: var(--apple-blue);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cartButton:hover {
+  background-color: var(--apple-blue);
+  color: var(--apple-white);
+  transform: scale(1.05);
+}
+
+.cartButton:active {
+  transform: scale(0.95);
+}
+
+.currentPrice {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--apple-blue);
+}
+
+.oldPrice {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-tertiary);
+  text-decoration: line-through;
+}

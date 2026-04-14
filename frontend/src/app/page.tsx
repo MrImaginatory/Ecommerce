@@ -1,40 +1,22 @@
 import styles from "./page.module.css";
 import Carousel from "@/components/Carousel/Carousel";
 
-const MOCK_SLIDES = [
-  {
-    id: "macbook",
-    title: "MacBook Pro",
-    subtitle: "Mind-blowing. Head-turning.",
-    imageSrc: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=2000",
-    theme: "light" as const,
-    ctaLabel: "Buy",
-    ctaLink: "/store/mac",
-  },
-  {
-    id: "iphone",
-    title: "iPhone 15 Pro",
-    subtitle: "Titanium. So strong. So light. So Pro.",
-    imageSrc: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&q=80&w=2000",
-    theme: "dark" as const,
-    ctaLabel: "Learn more",
-    ctaLink: "/store/iphone",
-  },
-  {
-    id: "watch",
-    title: "Apple Watch Series 9",
-    subtitle: "Smarter. Brighter. Mightier.",
-    imageSrc: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&q=80&w=2000",
-    theme: "light" as const,
-    ctaLabel: "Buy",
-    ctaLink: "/store/watch",
-  },
-];
+import carouselData from "@/data/carousel.json";
+import brandsData from "@/data/brands.json";
+import trendingData from "@/data/trending.json";
+import { SlideData } from "@/components/Carousel/Carousel";
+import BrandCarousel from "@/components/BrandCarousel/BrandCarousel";
+import ProductCarousel from "@/components/ProductCarousel/ProductCarousel";
+
+// Verify data shape matches SlideData interface
+const typedSlides: SlideData[] = carouselData as SlideData[];
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Carousel slides={MOCK_SLIDES} />
+      <Carousel slides={typedSlides} />
+      <BrandCarousel brands={brandsData} />
+      <ProductCarousel products={trendingData} title="Trending Products" />
     </main>
   );
 }

@@ -1,0 +1,81 @@
+.brandSection {
+  padding: 40px 0;
+  background-color: var(--apple-gray);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: var(--spacing-24);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.embla {
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla__container {
+  display: flex;
+  user-select: none;
+  touch-action: pan-y;
+  margin-left: calc(var(--spacing-24) * -1);
+}
+
+.embla__slide {
+  flex: 0 0 auto;
+  min-width: 0;
+  padding-left: var(--spacing-24);
+}
+
+.brandLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 100px;
+  background-color: transparent;
+  /* Transparent to blend with section background */
+  border-radius: var(--radius-standard);
+  transition: transform 0.3s ease;
+  padding: var(--spacing-20);
+  text-decoration: none;
+}
+
+.brandLink:hover {
+  transform: scale(1.05);
+  /* background-color: #ffffff; */
+}
+
+.brandLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(1) opacity(0.5);
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* Dark mode override for logos */
+:global([data-theme='dark']) .brandLogo {
+  filter: grayscale(0) opacity(1);
+}
+
+.brandLink:hover .brandLogo {
+  filter: grayscale(0) opacity(1);
+}
+
+@media (max-width: 900px) {
+  .brandSection {
+    padding: 60px 0;
+  }
+
+  .brandLink {
+    width: 140px;
+    height: 80px;
+  }
+}

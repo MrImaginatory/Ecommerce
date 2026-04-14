@@ -1,0 +1,62 @@
+[
+  {
+    "id": "b1",
+    "name": "Apple",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+  },
+  {
+    "id": "b2",
+    "name": "Samsung",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/6/61/Samsung_old_logo_before_year_2015.svg"
+  },
+  {
+    "id": "b3",
+    "name": "Nike",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg"
+  },
+  {
+    "id": "b4",
+    "name": "Sony",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg"
+  },
+  {
+    "id": "b5",
+    "name": "Dell",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Dell_logo.svg"
+  },
+  {
+    "id": "b6",
+    "name": "Adidas",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg"
+  },
+  {
+    "id": "b7",
+    "name": "Microsoft",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg"
+  },
+  {
+    "id": "b8",
+    "name": "Intel",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/8/85/Intel_logo_2023.svg"
+  },
+  {
+    "id": "b9",
+    "name": "Nvidia",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/a/a4/NVIDIA_logo.svg"
+  },
+  {
+    "id": "b10",
+    "name": "Asus",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/8/86/Asus_blue_logo.svg"
+  },
+  {
+    "id": "b11",
+    "name": "Logitech",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Logitech_G_logo_stack_blue.svg"
+  },
+  {
+    "id": "b12",
+    "name": "Bose",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Bose_logo.svg"
+  }
+]
