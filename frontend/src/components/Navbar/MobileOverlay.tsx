@@ -89,18 +89,28 @@ export default function MobileOverlay({ isOpen, onClose, activeTab }: MobileOver
               <div className={styles.mobileAccordion}>
                 {links.map((link) => (
                   <div key={link.id} className={styles.accordionGroup}>
-                    <button 
-                      className={`${styles.accordionTrigger} ${openCategory === link.id ? styles.activeTrigger : ""}`}
-                      onClick={() => toggleCategory(link.id)}
-                    >
-                      {link.label}
-                      <motion.div
-                        animate={{ rotate: openCategory === link.id ? 90 : 0 }}
-                        transition={{ duration: 0.2 }}
+                    {link.sublinks && link.sublinks.length > 0 ? (
+                      <button 
+                        className={`${styles.accordionTrigger} ${openCategory === link.id ? styles.activeTrigger : ""}`}
+                        onClick={() => toggleCategory(link.id)}
                       >
-                        <ChevronRight size={18} />
-                      </motion.div>
-                    </button>
+                        {link.label}
+                        <motion.div
+                          animate={{ rotate: openCategory === link.id ? 90 : 0 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <ChevronRight size={18} />
+                        </motion.div>
+                      </button>
+                    ) : (
+                      <Link 
+                        href={link.href} 
+                        className={styles.accordionTrigger}
+                        onClick={onClose}
+                      >
+                        {link.label}
+                      </Link>
+                    )}
 
                     <AnimatePresence>
                       {openCategory === link.id && link.sublinks && (
@@ -112,17 +122,27 @@ export default function MobileOverlay({ isOpen, onClose, activeTab }: MobileOver
                         >
                           {link.sublinks.map((sublink) => (
                             <div key={sublink.label} className={styles.subAccordionGroup}>
-                              <button 
-                                className={`${styles.subAccordionTrigger} ${openSublink === sublink.label ? styles.activeSubTrigger : ""}`}
-                                onClick={() => toggleSublink(sublink.label)}
-                              >
-                                {sublink.label}
-                                <motion.div
-                                  animate={{ rotate: openSublink === sublink.label ? 90 : 0 }}
+                              {sublink.subcategories && sublink.subcategories.length > 0 ? (
+                                <button 
+                                  className={`${styles.subAccordionTrigger} ${openSublink === sublink.label ? styles.activeSubTrigger : ""}`}
+                                  onClick={() => toggleSublink(sublink.label)}
                                 >
-                                  <ChevronRight size={16} />
-                                </motion.div>
-                              </button>
+                                  {sublink.label}
+                                  <motion.div
+                                    animate={{ rotate: openSublink === sublink.label ? 90 : 0 }}
+                                  >
+                                    <ChevronRight size={16} />
+                                  </motion.div>
+                                </button>
+                              ) : (
+                                <Link 
+                                  href={sublink.href} 
+                                  className={styles.subAccordionTrigger}
+                                  onClick={onClose}
+                                >
+                                  {sublink.label}
+                                </Link>
+                              )}
 
                               <AnimatePresence>
                                 {openSublink === sublink.label && sublink.subcategories && (
