@@ -19,12 +19,14 @@ export default function Home() {
         subtitle="Greatness in the making."
         viewAllLink="/trending"
         endpoint={apiConfig.trendingEndpoint}
+        lazy={false}
       />
       <ProductCarousel
         title="Hit Collections"
         subtitle="Your daily essentials, redefined."
         viewAllLink="/HitCollections"
         endpoint={apiConfig.hitCollectionsEndpoint}
+        lazy={false}
       />
       <ProductCarousel
         title="New Arrivals"

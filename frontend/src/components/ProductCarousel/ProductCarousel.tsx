@@ -8,6 +8,7 @@ import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
+import { useInView } from "@/hooks/useInView";
 
 interface ProductCarouselProps {
   products?: Product[];
@@ -15,6 +16,7 @@ interface ProductCarouselProps {
   subtitle?: string;
   viewAllLink?: string;
   endpoint?: string;
+  lazy?: boolean;
 }
 
 export default function ProductCarousel({ 
@@ -22,8 +24,14 @@ export default function ProductCarousel({
   title, 
   subtitle, 
   viewAllLink = "#",
-  endpoint
+  endpoint,
+  lazy = true
 }: ProductCarouselProps) {
+  const [sectionRef, isInView] = useInView({
+    rootMargin: "600px", // Increased margin for smoother entry
+    triggerOnce: true
+  });
+
   const { data: apiProducts, isLoading, error } = useQuery<Product[]>({
     queryKey: ["products", endpoint],
     queryFn: async () => {
@@ -33,12 +41,13 @@ export default function ProductCarousel({
       const fullUrl = endpoint.startsWith("http") 
         ? endpoint 
         : `${baseUrl}${endpoint.startsWith("/") ? "" : "/"}${endpoint}`;
-        
+      
+      console.log(`[API] Triggered load for: ${title}`);
       const res = await fetch(fullUrl);
       if (!res.ok) throw new Error("Failed to fetch products");
       return res.json();
     },
-    enabled: !!endpoint,
+    enabled: !!endpoint && (lazy ? isInView : true),
   });
 
   const finalProducts = (endpoint ? apiProducts : products) || [];
@@ -80,7 +89,7 @@ export default function ProductCarousel({
   }
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} ref={sectionRef}>
       <div className={styles.header}>
         <div className={styles.titleGroup}>
           <h2 className={styles.title}>{title}</h2>
