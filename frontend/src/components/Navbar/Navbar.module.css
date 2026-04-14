@@ -7,6 +7,16 @@
   z-index: 1000;
 }
 
+.desktopOnly {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .desktopOnly {
+    display: none;
+  }
+}
+
 /* Tier 1: Offer Banner */
 .offerBanner {
   background-color: var(--apple-gray);
@@ -302,4 +312,233 @@
 .error {
   color: rgba(255, 255, 255, 0.5);
   font-size: 11px;
+}
+
+/* Mobile Bottom Nav */
+.mobileBottomNav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background-color: var(--nav-bg);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-top: 1px solid var(--nav-border);
+  z-index: 2000;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (max-width: 900px) {
+  .mobileBottomNav {
+    display: block;
+  }
+}
+
+.mobileNavContent {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.mobileTab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  opacity: 0.6;
+  transition: all 0.2s ease;
+  flex: 1;
+}
+
+.activeTab {
+  opacity: 1;
+  color: var(--apple-blue);
+}
+
+.tabLabel {
+  font-size: 10px;
+  font-weight: 500;
+}
+
+/* Mobile Overlay */
+.mobileOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-background-primary);
+  z-index: 1500;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.mobileOverlayHeader {
+  padding: var(--spacing-14) var(--spacing-24);
+  background-color: var(--nav-bg);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--nav-border);
+}
+
+.mobileMenuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menuTitle {
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.mobileSearchContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-10);
+  background: var(--apple-gray);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.mobileSearchInput {
+  background: transparent;
+  border: none;
+  flex: 1;
+  font-size: 17px;
+  color: var(--color-text-primary);
+  outline: none;
+}
+
+.closeOverlay {
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.mobileOverlayContent {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 80px; /* Space for bottom nav */
+}
+
+/* Mobile Accordion */
+.mobileAccordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordionGroup {
+  border-bottom: 1px solid var(--nav-border);
+}
+
+.accordionTrigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-20) var(--spacing-24);
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: left;
+  letter-spacing: -0.02em;
+}
+
+.activeTrigger {
+  color: var(--apple-blue);
+}
+
+.accordionContent {
+  background-color: var(--apple-gray);
+  overflow: hidden;
+}
+
+.subAccordionGroup {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.subAccordionTrigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-14) var(--spacing-24) var(--spacing-14) 40px;
+  background: none;
+  border: none;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-align: left;
+}
+
+.activeSubTrigger {
+  color: var(--apple-blue);
+  font-weight: 600;
+}
+
+.subAccordionContent {
+  padding: var(--spacing-14) var(--spacing-24) var(--spacing-14) 40px;
+  background-color: var(--color-background-primary);
+}
+
+.mobileSubcategoryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-14);
+}
+
+.mobileSubcategoryCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-decoration: none !important;
+}
+
+.mobileImageWrapper {
+  aspect-ratio: 16/9;
+  background: var(--apple-gray);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileSubImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mobileItemLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.pagePlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px var(--spacing-24);
+  text-align: center;
+}
+
+.pagePlaceholder h2 {
+  font-size: 34px;
+  margin-bottom: 12px;
 }
