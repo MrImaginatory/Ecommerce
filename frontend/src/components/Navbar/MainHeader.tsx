@@ -40,15 +40,7 @@ export default function MainHeader() {
             priority
           />
         ) : (
-          <svg
-            viewBox="0 0 17 48"
-            width="17"
-            height="48"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="m15.035 25.044c-.015-3.321 2.716-4.918 2.844-4.991-1.543-2.257-3.943-2.565-4.8-2.597-2.046-.208-3.996 1.205-5.034 1.205s-2.651-1.189-4.364-1.157c-2.253.033-4.331 1.312-5.492 3.324-2.341 4.061-.599 10.063 1.678 13.344 1.116 1.605 2.451 3.402 4.186 3.339 1.669-.067 2.3-.1.082 4.316-.1.082 2.016 4.316.1.082 2.658 1.157 4.365 1.124 1.748-.033 4.148-1.312 5.305-3.321 1.288-1.884 1.821-3.712 1.854-3.804-.034-.015-3.621-1.39-3.654-5.465m-2.731-10.364c.921-1.116 1.542-2.668 1.373-4.218-1.332.054-2.946.887-3.901 2.003-.857.989-1.606 2.568-1.406 4.08 1.487.116 2.997-.733 3.934-1.865" />
-          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="hsl(228, 97%, 42%)" viewBox="0 0 24 24"><circle cx="4" cy="12" r="3"><animate id="spinner_qFRN" attributeName="cy" begin="0;spinner_OcgL.end+0.25s" calcMode="spline" dur="0.6s" keySplines=".33,.66,.66,1;.33,0,.66,.33" values="12;6;12" /></circle><circle cx="12" cy="12" r="3"><animate attributeName="cy" begin="spinner_qFRN.begin+0.1s" calcMode="spline" dur="0.6s" keySplines=".33,.66,.66,1;.33,0,.66,.33" values="12;6;12" /></circle><circle cx="20" cy="12" r="3"><animate id="spinner_OcgL" attributeName="cy" begin="spinner_qFRN.begin+0.2s" calcMode="spline" dur="0.6s" keySplines=".33,.66,.66,1;.33,0,.66,.33" values="12;6;12" /></circle></svg>
         )}
         {config?.showName && config?.siteName && (
           <span className={styles.siteName}>{config.siteName}</span>
@@ -64,8 +56,8 @@ export default function MainHeader() {
           {renderLogo()}
         </Link>
         <div className={styles.actions}>
-          <button 
-            className={styles.iconButton} 
+          <button
+            className={styles.iconButton}
             onClick={toggleTheme}
             aria-label={theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
           >
