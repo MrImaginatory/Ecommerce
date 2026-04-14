@@ -94,10 +94,19 @@
 .navLinks {
   width: 100%;
   max-width: 980px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   list-style: none;
+}
+
+.navItem {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 .navLink {
@@ -106,10 +115,52 @@
   color: var(--apple-white);
   opacity: 0.8;
   transition: opacity 0.2s ease;
+  padding: 0 var(--spacing-8);
   white-space: nowrap;
 }
 
 .navLink:hover {
+  opacity: 1;
+  text-decoration: none !important;
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 200px;
+  padding-top: var(--spacing-8);
+  z-index: 10;
+}
+
+.dropdownContent {
+  background-color: rgba(22, 22, 23, 0.82);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-radius: var(--radius-large);
+  padding: var(--spacing-20);
+  box-shadow: var(--apple-card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-14);
+}
+
+.subLink {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--apple-white);
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.subLink:hover {
   opacity: 1;
   text-decoration: none !important;
 }
