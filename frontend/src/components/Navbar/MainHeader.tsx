@@ -1,8 +1,13 @@
-import { ShoppingBag, Heart, User } from "lucide-react";
+"use client";
+
+import { ShoppingBag, Heart, User, Sun, Moon } from "lucide-react";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
+import { useTheme } from "@/components/Theme/ThemeProvider";
 
 export default function MainHeader() {
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <div className={styles.mainHeader}>
       <div className={styles.headerContent}>
@@ -18,14 +23,21 @@ export default function MainHeader() {
           </svg>
         </Link>
         <div className={styles.actions}>
+          <button 
+            className={styles.iconButton} 
+            onClick={toggleTheme}
+            aria-label={theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
+          >
+            {theme === "light" ? <Moon size={18} strokeWidth={1.5} /> : <Sun size={18} strokeWidth={1.5} />}
+          </button>
           <button className={styles.iconButton} aria-label="User Account">
-            <User size={18} />
+            <User size={18} strokeWidth={1.5} />
           </button>
           <button className={styles.iconButton} aria-label="Favorites">
-            <Heart size={18} />
+            <Heart size={18} strokeWidth={1.5} />
           </button>
           <button className={styles.iconButton} aria-label="Shopping Bag">
-            <ShoppingBag size={18} />
+            <ShoppingBag size={18} strokeWidth={1.5} />
           </button>
         </div>
       </div>

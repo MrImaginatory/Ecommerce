@@ -10,11 +10,6 @@
   --apple-link-blue: #0066cc;
   --apple-bright-blue: #2997ff;
 
-  /* Colors - Text */
-  --color-text-primary: var(--apple-near-black);
-  --color-text-secondary: rgba(0, 0, 0, 0.8);
-  --color-text-tertiary: rgba(0, 0, 0, 0.48);
-
   /* Surface & Dark Variants */
   --apple-surface-1: #272729;
   --apple-surface-2: #262628;
@@ -48,19 +43,26 @@
   --spacing-20: 20px;
   --spacing-24: 24px;
 
-  /* Dynamic Vars (Defaults) */
+  /* Theme Defaults (Light) */
   --background: var(--apple-white);
   --foreground: var(--apple-near-black);
+  --color-text-primary: var(--apple-near-black);
+  --color-text-secondary: rgba(0, 0, 0, 0.8);
+  --color-text-tertiary: rgba(0, 0, 0, 0.48);
+  --nav-bg: rgba(255, 255, 255, 0.82);
+  --nav-border: rgba(0, 0, 0, 0.1);
+  --theme-overlay: rgba(0, 0, 0, 0.4);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--apple-black);
-    --foreground: var(--apple-white);
-    --color-text-primary: var(--apple-white);
-    --color-text-secondary: rgba(255, 255, 255, 0.8);
-    --color-text-tertiary: rgba(255, 255, 255, 0.48);
-  }
+[data-theme='dark'] {
+  --background: var(--apple-black);
+  --foreground: var(--apple-white);
+  --color-text-primary: var(--apple-white);
+  --color-text-secondary: rgba(255, 255, 255, 0.82);
+  --color-text-tertiary: rgba(255, 255, 255, 0.48);
+  --nav-bg: rgba(0, 0, 0, 0.82);
+  --nav-border: rgba(255, 255, 255, 0.1);
+  --theme-overlay: rgba(0, 0, 0, 0.6);
 }
 
 * {

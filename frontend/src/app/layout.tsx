@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import QueryProvider from "./providers/QueryProvider";
 import Navbar from "@/components/Navbar/Navbar";
+import { ThemeProvider } from "@/components/Theme/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Apple - Premium Ecommerce Experience",
@@ -14,12 +15,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <QueryProvider>
-          <Navbar />
-          {children}
-        </QueryProvider>
+        <ThemeProvider>
+          <QueryProvider>
+            <Navbar />
+            {children}
+          </QueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -19,7 +19,7 @@ interface NavLink {
 }
 
 export default function GlobalNav() {
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [activeId, setActiveId] = useState<number | null>(null);
 
   const { data: links, isLoading, isError } = useQuery<NavLink[]>({
     queryKey: ["nav-links"],
@@ -35,44 +35,83 @@ export default function GlobalNav() {
   if (isLoading) return <div className={styles.globalNav}><div className={styles.loading}>Loading...</div></div>;
   if (isError) return <div className={styles.globalNav}><div className={styles.error}>Error loading navigation</div></div>;
 
+  const activeLink = links?.find(l => l.id === activeId);
+  const hasSublinks = activeLink && activeLink.sublinks && activeLink.sublinks.length > 0;
+
   return (
-    <nav className={styles.globalNav}>
+    <nav 
+      className={styles.globalNav} 
+      onMouseLeave={() => setActiveId(null)}
+    >
       <ul className={styles.navLinks}>
         {links?.map((link) => (
           <li 
             key={link.id} 
             className={styles.navItem}
-            onMouseEnter={() => setHoveredId(link.id)}
-            onMouseLeave={() => setHoveredId(null)}
+            onMouseEnter={() => {
+              if (link.sublinks) {
+                setActiveId(link.id);
+              } else {
+                setActiveId(null);
+              }
+            }}
           >
             <Link href={link.href} className={styles.navLink}>
               {link.label}
             </Link>
-
-            <AnimatePresence>
-              {link.sublinks && (hoveredId === link.id) && (
-                <motion.div
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -5 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                  className={styles.dropdown}
-                >
-                  <div className={styles.dropdownContent}>
-                    <div className={styles.column}>
-                      {link.sublinks.map((sub, idx) => (
-                        <Link key={idx} href={sub.href} className={styles.subLink}>
-                          {sub.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </li>
         ))}
       </ul>
+
+      <AnimatePresence>
+        {activeId && hasSublinks && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className={styles.overlay}
+              onClick={() => setActiveId(null)}
+            />
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+              className={styles.dropdown}
+              onMouseLeave={() => setActiveId(null)}
+            >
+              <div className={styles.dropdownContent}>
+                <div className={styles.dropdownColumn}>
+                  <span className={styles.columnTitle}>Shop</span>
+                  {activeLink.sublinks!.map((sub, idx) => (
+                    <Link key={idx} href={sub.href} className={styles.subLink}>
+                      {sub.label}
+                    </Link>
+                  ))}
+                </div>
+                
+                <div className={styles.dropdownColumn}>
+                  <span className={styles.columnTitle}>Quick Links</span>
+                  <Link href="#" className={styles.secondaryLink}>Find a Store</Link>
+                  <Link href="#" className={styles.secondaryLink}>Order Status</Link>
+                  <Link href="#" className={styles.secondaryLink}>Apple Trade In</Link>
+                  <Link href="#" className={styles.secondaryLink}>Financing</Link>
+                </div>
+
+                <div className={styles.dropdownColumn}>
+                  <span className={styles.columnTitle}>Shop Special Stores</span>
+                  <Link href="#" className={styles.secondaryLink}>Certified Refurbished</Link>
+                  <Link href="#" className={styles.secondaryLink}>Education</Link>
+                  <Link href="#" className={styles.secondaryLink}>Business</Link>
+                  <Link href="#" className={styles.secondaryLink}>Veterans and Military</Link>
+                  <Link href="#" className={styles.secondaryLink}>Government</Link>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

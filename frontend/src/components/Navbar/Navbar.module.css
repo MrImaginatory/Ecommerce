@@ -29,14 +29,15 @@
 /* Tier 2: Main Header */
 .mainHeader {
   height: 48px;
-  background-color: rgba(0, 0, 0, 0.82);
+  background-color: var(--nav-bg);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 var(--spacing-24);
-  color: var(--apple-white);
+  color: var(--color-text-primary);
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .headerContent {
@@ -60,7 +61,7 @@
 
 .iconButton {
   background: transparent;
-  color: var(--apple-white);
+  color: var(--color-text-primary);
   padding: 0;
   display: flex;
   align-items: center;
@@ -81,14 +82,17 @@
 /* Tier 3: Global Nav (Dynamic Links) */
 .globalNav {
   height: 44px;
-  background-color: rgba(0, 0, 0, 0.82);
+  background-color: var(--nav-bg);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 var(--spacing-24);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--nav-border);
+  transition: background-color 0.5s ease;
+  position: relative;
+  z-index: 110;
 }
 
 .navLinks {
@@ -112,7 +116,7 @@
 .navLink {
   font-size: 12px;
   font-weight: 400;
-  color: var(--apple-white);
+  color: var(--color-text-primary);
   opacity: 0.8;
   transition: opacity 0.2s ease;
   padding: 0 var(--spacing-8);
@@ -124,45 +128,84 @@
   text-decoration: none !important;
 }
 
+/* Dropdown Overlay */
+.overlay {
+  position: fixed;
+  top: 92px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--theme-overlay);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  z-index: 90;
+}
+
 /* Dropdown */
 .dropdown {
   position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  min-width: 200px;
-  padding-top: var(--spacing-8);
-  z-index: 10;
+  top: 44px; /* Height of globalNav */
+  left: 0;
+  width: 100%;
+  background-color: var(--nav-bg);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--nav-border);
+  z-index: 100;
+  overflow: hidden;
 }
 
 .dropdownContent {
-  background-color: rgba(22, 22, 23, 0.82);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-radius: var(--radius-large);
-  padding: var(--spacing-20);
-  box-shadow: var(--apple-card-shadow);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 40px var(--spacing-24) 80px;
+  display: flex;
+  gap: 120px;
 }
 
-.column {
+.dropdownColumn {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-14);
 }
 
-.subLink {
-  font-size: 11px;
+.columnTitle {
+  font-size: 12px;
   font-weight: 400;
-  color: var(--apple-white);
-  opacity: 0.8;
-  transition: opacity 0.2s ease;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-20);
+  letter-spacing: 0.02em;
+}
+
+.subLink {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  opacity: 1;
+  transition: transform 0.2s ease, color 0.2s ease;
   white-space: nowrap;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  padding: var(--spacing-4) 0;
 }
 
 .subLink:hover {
-  opacity: 1;
+  color: var(--apple-blue);
+  transform: translateX(4px);
   text-decoration: none !important;
+}
+
+/* Secondary links in column */
+.secondaryLink {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  transition: color 0.2s ease;
+}
+
+.secondaryLink:hover {
+  color: var(--apple-blue);
 }
 
 /* Loading/Error states */
