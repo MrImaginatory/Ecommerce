@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import OfferBanner from "./OfferBanner";
 import MainHeader from "./MainHeader";
 import GlobalNav from "./GlobalNav";
@@ -16,6 +16,17 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
     setActiveTab("");
   };
+
+  // Auto-close mobile menu when resizing back to desktop view
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 900) {
+        handleCloseOverlay();
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className={styles.navbar}>

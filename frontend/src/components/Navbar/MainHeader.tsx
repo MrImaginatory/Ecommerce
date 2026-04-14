@@ -63,13 +63,13 @@ export default function MainHeader() {
           >
             {theme === "light" ? <Moon size={18} strokeWidth={1.5} /> : <Sun size={18} strokeWidth={1.5} />}
           </button>
-          <button className={styles.iconButton} aria-label="User Account">
+          <button className={`${styles.iconButton} ${styles.desktopOnlyIcon}`} aria-label="User Account">
             <User size={18} strokeWidth={1.5} />
           </button>
-          <button className={styles.iconButton} aria-label="Favorites">
+          <button className={`${styles.iconButton} ${styles.desktopOnlyIcon}`} aria-label="Favorites">
             <Heart size={18} strokeWidth={1.5} />
           </button>
-          <button className={styles.iconButton} aria-label="Shopping Bag">
+          <button className={`${styles.iconButton} ${styles.desktopOnlyIcon}`} aria-label="Shopping Bag">
             <ShoppingBag size={18} strokeWidth={1.5} />
           </button>
         </div>

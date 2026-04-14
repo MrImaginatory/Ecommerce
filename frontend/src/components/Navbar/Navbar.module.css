@@ -17,6 +17,8 @@
   }
 }
 
+
+
 /* Tier 1: Offer Banner */
 .offerBanner {
   background-color: var(--apple-gray);
@@ -541,4 +543,15 @@
 .pagePlaceholder h2 {
   font-size: 34px;
   margin-bottom: 12px;
+}
+
+/* Visibility Utilities (at the end to override previous display properties) */
+.desktopOnlyIcon {
+  display: flex;
+}
+
+@media (max-width: 900px) {
+  .desktopOnlyIcon {
+    display: none !important;
+  }
 }
