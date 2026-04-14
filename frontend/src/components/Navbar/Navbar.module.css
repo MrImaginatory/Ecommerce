@@ -38,6 +38,8 @@
   padding: 0 var(--spacing-24);
   color: var(--color-text-primary);
   transition: background-color 0.5s ease, color 0.5s ease;
+  position: relative;
+  z-index: 120;
 }
 
 .headerContent {
@@ -131,7 +133,7 @@
 /* Dropdown Overlay */
 .overlay {
   position: fixed;
-  top: 92px;
+  top: 128px;
   left: 0;
   right: 0;
   bottom: 0;

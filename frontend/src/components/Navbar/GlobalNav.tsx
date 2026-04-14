@@ -20,6 +20,7 @@ interface NavLink {
 
 export default function GlobalNav() {
   const [activeId, setActiveId] = useState<number | null>(null);
+  const [isLocked, setIsLocked] = useState(false);
 
   const { data: links, isLoading, isError } = useQuery<NavLink[]>({
     queryKey: ["nav-links"],
@@ -38,25 +39,47 @@ export default function GlobalNav() {
   const activeLink = links?.find(l => l.id === activeId);
   const hasSublinks = activeLink && activeLink.sublinks && activeLink.sublinks.length > 0;
 
+  const handleMouseEnter = (link: NavLink) => {
+    if (isLocked) return;
+    if (link.sublinks) {
+      setActiveId(link.id);
+    } else {
+      setActiveId(null);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (isLocked) return;
+    setActiveId(null);
+  };
+
+  const handleLinkClick = (id: number) => {
+    setActiveId(id);
+    setIsLocked(true);
+  };
+
+  const handleReset = () => {
+    setActiveId(null);
+    setIsLocked(false);
+  };
+
   return (
     <nav 
       className={styles.globalNav} 
-      onMouseLeave={() => setActiveId(null)}
+      onMouseLeave={handleMouseLeave}
     >
       <ul className={styles.navLinks}>
         {links?.map((link) => (
           <li 
             key={link.id} 
             className={styles.navItem}
-            onMouseEnter={() => {
-              if (link.sublinks) {
-                setActiveId(link.id);
-              } else {
-                setActiveId(null);
-              }
-            }}
+            onMouseEnter={() => handleMouseEnter(link)}
+            onClick={() => link.sublinks && handleLinkClick(link.id)}
           >
-            <Link href={link.href} className={styles.navLink}>
+            <Link 
+              href={link.href} 
+              className={`${styles.navLink} ${activeId === link.id ? styles.active : ""}`}
+            >
               {link.label}
             </Link>
           </li>
@@ -71,7 +94,7 @@ export default function GlobalNav() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className={styles.overlay}
-              onClick={() => setActiveId(null)}
+              onClick={handleReset}
             />
             <motion.div
               initial={{ height: 0, opacity: 0 }}
@@ -79,18 +102,18 @@ export default function GlobalNav() {
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
               className={styles.dropdown}
-              onMouseLeave={() => setActiveId(null)}
+              onMouseLeave={handleMouseLeave}
             >
               <div className={styles.dropdownContent}>
                 <div className={styles.dropdownColumn}>
                   <span className={styles.columnTitle}>Shop</span>
                   {activeLink.sublinks!.map((sub, idx) => (
-                    <Link key={idx} href={sub.href} className={styles.subLink}>
+                    <Link key={idx} href={sub.href} className={styles.subLink} onClick={handleReset}>
                       {sub.label}
                     </Link>
                   ))}
                 </div>
-                
+                {/* ... other columns */}
                 <div className={styles.dropdownColumn}>
                   <span className={styles.columnTitle}>Quick Links</span>
                   <Link href="#" className={styles.secondaryLink}>Find a Store</Link>
