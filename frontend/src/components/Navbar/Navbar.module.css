@@ -377,7 +377,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--color-background-primary);
+  background-color: var(--background);
   z-index: 1500;
   display: flex;
   flex-direction: column;
@@ -431,7 +431,8 @@
 .mobileOverlayContent {
   flex: 1;
   overflow-y: auto;
-  padding-bottom: 80px; /* Space for bottom nav */
+  padding-bottom: 80px;
+  /* Space for bottom nav */
 }
 
 /* Mobile Accordion */
@@ -449,7 +450,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--spacing-20) var(--spacing-24);
+  padding: var(--spacing-10) var(--spacing-24);
   background: none;
   border: none;
   font-size: 24px;
@@ -469,7 +470,7 @@
 }
 
 .subAccordionGroup {
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .subAccordionTrigger {
@@ -493,7 +494,7 @@
 
 .subAccordionContent {
   padding: var(--spacing-14) var(--spacing-24) var(--spacing-14) 40px;
-  background-color: var(--color-background-primary);
+  background-color: var(--background);
 }
 
 .mobileSubcategoryGrid {
