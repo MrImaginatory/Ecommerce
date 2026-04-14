@@ -7,27 +7,24 @@ import trendingData from "@/data/trending.json";
 import { SlideData } from "@/components/Carousel/Carousel";
 import BrandCarousel from "@/components/BrandCarousel/BrandCarousel";
 import ProductCarousel from "@/components/ProductCarousel/ProductCarousel";
-import hitCollectionsData from "@/data/hit-collections.json";
-
-// Verify data shape matches SlideData interface
-const typedSlides: SlideData[] = carouselData as SlideData[];
+import apiConfig from "@/data/api-config.json";
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Carousel slides={typedSlides} />
+      <Carousel endpoint={apiConfig.heroCarouselEndpoint} />
       <BrandCarousel brands={brandsData} />
       <ProductCarousel
         title="Trending Products"
         subtitle="Greatness in the making."
         viewAllLink="/trending"
-        endpoint="/TendingProducts"
+        endpoint={apiConfig.trendingEndpoint}
       />
       <ProductCarousel
-        products={hitCollectionsData}
         title="Hit Collections"
         subtitle="Your daily essentials, redefined."
-        viewAllLink="/collections"
+        viewAllLink="/HitCollections"
+        endpoint={apiConfig.hitCollectionsEndpoint}
       />
     </main>
   );

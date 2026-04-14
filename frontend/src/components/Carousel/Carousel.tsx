@@ -7,6 +7,8 @@ import styles from "./Carousel.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import HeroCarouselSkeleton from "./HeroCarouselSkeleton";
 
 export interface SlideData {
   id: string;
@@ -18,12 +20,43 @@ export interface SlideData {
 }
 
 interface CarouselProps {
-  slides: SlideData[];
+  slides?: SlideData[];
+  endpoint?: string;
 }
 
-export default function Carousel({ slides }: CarouselProps) {
+export default function Carousel({ slides = [], endpoint }: CarouselProps) {
+  const { data: apiSlides, isLoading } = useQuery<SlideData[]>({
+    queryKey: ["hero-carousel", endpoint],
+    queryFn: async () => {
+      if (!endpoint) return [];
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
+      const fullUrl = endpoint.startsWith("http") 
+        ? endpoint 
+        : `${baseUrl}${endpoint.startsWith("/") ? "" : "/"}${endpoint}`;
+      
+      console.log(`[Carousel] Fetching from: ${fullUrl}`);
+      
+      const res = await fetch(fullUrl);
+      if (!res.ok) throw new Error("Failed to fetch carousel data");
+      
+      const rawData = await res.json();
+      
+      // Sanitization Layer: Handle string-booleans and data anomalies
+      return rawData.map((item: any) => ({
+        ...item,
+        showTitle: typeof item.showTitle === "string" 
+          ? item.showTitle === "true" 
+          : !!item.showTitle,
+        // Decode HTML entities in imageSrc if present
+        imageSrc: item.imageSrc?.replace(/&amp;/g, "&").replace(/&#x3D;/g, "=") || ""
+      })) as SlideData[];
+    },
+    enabled: !!endpoint,
+  });
+
+  const finalSlides = (endpoint ? apiSlides : slides) || [];
   // Enforce maximum 10 items rule
-  const displayedSlides = slides.slice(0, 10);
+  const displayedSlides = finalSlides.slice(0, 10);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     Autoplay({ delay: 5000, stopOnInteraction: false }),
@@ -58,6 +91,7 @@ export default function Carousel({ slides }: CarouselProps) {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
 
+  if (isLoading) return <HeroCarouselSkeleton />;
   if (displayedSlides.length === 0) return null;
 
   return (

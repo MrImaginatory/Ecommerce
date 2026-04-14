@@ -1,0 +1,98 @@
+[
+  {
+    "id": "item1",
+    "title": "MacBook Pro",
+    "showTitle": false,
+    "imageSrc": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=2000",
+    "ctaLink": "/store/mac",
+    "theme": "light"
+  },
+  {
+    "id": "item2",
+    "title": "iPhone 15 Pro",
+    "showTitle": false,
+    "imageSrc": "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&q=80&w=2000",
+    "ctaLink": "/store/iphone",
+    "theme": "dark"
+  },
+  {
+    "id": "item3",
+    "title": "Apple Watch Series 9",
+    "showTitle": false,
+    "imageSrc": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&q=80&w=2000",
+    "ctaLink": "/store/watch",
+    "theme": "light"
+  },
+  {
+    "id": "item4",
+    "title": "AirPods Pro",
+    "showTitle": false,
+    "imageSrc": "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&q=80&w=2000",
+    "ctaLink": "/store/airpods",
+    "theme": "light"
+  },
+  {
+    "id": "item5",
+    "title": "iPad Pro",
+    "showTitle": false,
+    "imageSrc": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=2000",
+    "ctaLink": "/store/ipad",
+    "theme": "light"
+  },
+  {
+    "id": "item6",
+    "title": "Studio Display",
+    "showTitle": false,
+    "imageSrc": "https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?auto=format&fit=crop&q=80&w=2000",
+    "ctaLink": "/store/mac",
+    "theme": "light"
+  },
+  {
+    "id": "item7",
+    "title": "Mac Studio",
+    "showTitle": false,
+    "imageSrc": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&q=80&w=2000",
+    "ctaLink": "/store/mac",
+    "theme": "dark"
+  },
+  {
+    "id": "item8",
+    "title": "Accessories",
+    "showTitle": false,
+    "imageSrc": "https://images.unsplash.com/photo-1603539947678-cd3954ed515d?auto=format&fit=crop&q=80&w=2000",
+    "ctaLink": "/store/accessories",
+    "theme": "light"
+  },
+  {
+    "id": "item9",
+    "title": "HomePod",
+    "showTitle": false,
+    "imageSrc": "https://images.unsplash.com/photo-1543512214-318c7553f230?auto=format&fit=crop&q=80&w=2000",
+    "ctaLink": "/store/home",
+    "theme": "dark"
+  },
+  {
+    "id": "item10",
+    "title": "AirTag",
+    "showTitle": false,
+    "imageSrc": "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?auto=format&fit=crop&q=80&w=2000",
+    "ctaLink": "/store/accessories",
+    "theme": "light"
+  },
+  {
+    "id": "item11",
+    "title": "Hidden Item 11",
+    "showTitle": false,
+    "imageSrc": "https://images.unsplash.com/photo-1505156868547-9b49f4df4e04?auto=format&fit=crop&q=80&w=2000",
+    "ctaLink": "/store/hidden",
+    "theme": "light"
+  },
+  {
+    "id": "item12",
+    "title": "Hidden Item 12",
+    "showTitle": false,
+    "imageSrc": "https://images.unsplash.com/photo-1505156868547-9b49f4df4e04?auto=format&fit=crop&q=80&w=2000",
+    "ctaLink": "/store/hidden",
+    "theme": "light"
+  }
+]

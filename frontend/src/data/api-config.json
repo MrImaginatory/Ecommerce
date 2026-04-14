@@ -1,0 +1,5 @@
+{
+  "trendingEndpoint": "/TrendingProducts",
+  "hitCollectionsEndpoint": "/HitCollections",
+  "heroCarouselEndpoint": "/HeroCarousel"
+}
