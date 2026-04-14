@@ -53,12 +53,28 @@
 .logo {
   display: flex;
   align-items: center;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.logoContainer {
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  object-fit: contain;
+  height: auto;
+  width: auto;
+  max-height: 24px;
 }
 
 .actions {
   display: flex;
   align-items: center;
   gap: var(--spacing-24);
+  flex-shrink: 0;
 }
 
 .iconButton {
@@ -133,7 +149,7 @@
 /* Dropdown Overlay */
 .overlay {
   position: fixed;
-  top: 128px;
+  top: 130px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -146,7 +162,8 @@
 /* Dropdown */
 .dropdown {
   position: absolute;
-  top: 44px; /* Height of globalNav */
+  top: 44px;
+  /* Height of globalNav */
   left: 0;
   width: 100%;
   background-color: var(--nav-bg);
@@ -211,7 +228,8 @@
 }
 
 /* Loading/Error states */
-.loading, .error {
+.loading,
+.error {
   color: rgba(255, 255, 255, 0.5);
   font-size: 11px;
 }
