@@ -1,58 +1,197 @@
 [
-  { 
-    "id": 1, 
-    "label": "Store", 
+  {
+    "id": 1,
+    "label": "Store",
     "href": "/store",
     "sublinks": [
-      { "label": "Shop the Latest", "href": "/store" },
-      { "label": "Mac", "href": "/mac" },
-      { "label": "iPad", "href": "/ipad" },
-      { "label": "iPhone", "href": "/iphone" },
-      { "label": "Apple Watch", "href": "/watch" },
-      { "label": "Accessory", "href": "/accessories" }
+      {
+        "label": "Shop the Latest",
+        "href": "/store"
+      },
+      {
+        "label": "Mac",
+        "href": "/mac"
+      },
+      {
+        "label": "iPad",
+        "href": "/ipad"
+      },
+      {
+        "label": "iPhone",
+        "href": "/iphone"
+      },
+      {
+        "label": "Apple Watch",
+        "href": "/watch"
+      },
+      {
+        "label": "Accessory",
+        "href": "/accessories"
+      }
     ]
   },
-  { 
-    "id": 2, 
-    "label": "Mac", 
+  {
+    "id": 2,
+    "label": "Mac",
     "href": "/mac",
     "sublinks": [
-      { "label": "MacBook Air", "href": "/mac/macbook-air" },
-      { "label": "MacBook Pro", "href": "/mac/macbook-pro" },
-      { "label": "iMac", "href": "/mac/imac" },
-      { "label": "Mac mini", "href": "/mac/mac-mini" },
-      { "label": "Mac Studio", "href": "/mac/mac-studio" },
-      { "label": "Mac Pro", "href": "/mac/mac-pro" }
+      {
+        "label": "MacBook Air",
+        "href": "/mac/macbook-air",
+        "subcategories": [
+          {
+            "label": "13-inch M3",
+            "href": "13-inch-m3",
+            "image": "https://picsum.photos/200"
+          },
+          {
+            "label": "15-inch M3",
+            "href": "15-inch-m3",
+            "image": "https://picsum.photos/200"
+          },
+          {
+            "label": "13-inch M2",
+            "href": "13-inch-m2",
+            "image": "https://picsum.photos/200"
+          }
+        ]
+      },
+      {
+        "label": "MacBook Pro",
+        "href": "/mac/macbook-pro",
+        "subcategories": [
+          {
+            "label": "14-inch M3",
+            "href": "14-inch-m3",
+            "image": "https://picsum.photos/200"
+          },
+          {
+            "label": "16-inch M3",
+            "href": "16-inch-m3",
+            "image": "https://picsum.photos/200"
+          }
+        ]
+      },
+      {
+        "label": "iMac",
+        "href": "/mac/imac"
+      },
+      {
+        "label": "Mac mini",
+        "href": "/mac/mac-mini"
+      },
+      {
+        "label": "Mac Studio",
+        "href": "/mac/mac-studio"
+      },
+      {
+        "label": "Mac Pro",
+        "href": "/mac/mac-pro"
+      }
     ]
   },
-  { 
-    "id": 3, 
-    "label": "iPad", 
+  {
+    "id": 3,
+    "label": "iPad",
     "href": "/ipad",
     "sublinks": [
-      { "label": "iPad Pro", "href": "/ipad/ipad-pro" },
-      { "label": "iPad Air", "href": "/ipad/ipad-air" },
-      { "label": "iPad", "href": "/ipad/ipad" },
-      { "label": "iPad mini", "href": "/ipad/ipad-mini" }
+      {
+        "label": "iPad Pro",
+        "href": "/ipad/ipad-pro",
+        "subcategories": [
+          {
+            "label": "13-inch M4",
+            "href": "13-inch-m4",
+            "image": "https://picsum.photos/200"
+          },
+          {
+            "label": "11-inch M4",
+            "href": "11-inch-m4",
+            "image": "https://picsum.photos/200"
+          }
+        ]
+      },
+      {
+        "label": "iPad Air",
+        "href": "/ipad/ipad-air"
+      },
+      {
+        "label": "iPad",
+        "href": "/ipad/ipad"
+      },
+      {
+        "label": "iPad mini",
+        "href": "/ipad/ipad-mini"
+      }
     ]
   },
-  { 
-    "id": 4, 
-    "label": "iPhone", 
+  {
+    "id": 4,
+    "label": "iPhone",
     "href": "/iphone",
     "sublinks": [
-      { "label": "iPhone 15 Pro", "href": "/iphone/iphone-15-pro" },
-      { "label": "iPhone 15", "href": "/iphone/iphone-15" },
-      { "label": "iPhone 14", "href": "/iphone/iphone-14" },
-      { "label": "iPhone 13", "href": "/iphone/iphone-13" },
-      { "label": "iPhone SE", "href": "/iphone/iphone-se" }
+      {
+        "label": "iPhone 15 Pro",
+        "href": "/iphone/iphone-15-pro",
+        "subcategories": [
+          {
+            "label": "Titanium",
+            "href": "titanium",
+            "image": "/images/logo.svg"
+          }
+        ]
+      },
+      {
+        "label": "iPhone 15",
+        "href": "/iphone/iphone-15"
+      },
+      {
+        "label": "iPhone 14",
+        "href": "/iphone/iphone-14"
+      },
+      {
+        "label": "iPhone 13",
+        "href": "/iphone/iphone-13"
+      },
+      {
+        "label": "iPhone SE",
+        "href": "/iphone/iphone-se"
+      }
     ]
   },
-  { "id": 5, "label": "Watch", "href": "/watch" },
-  { "id": 6, "label": "Vision", "href": "/vision" },
-  { "id": 7, "label": "AirPods", "href": "/airpods" },
-  { "id": 8, "label": "TV & Home", "href": "/tv-home" },
-  { "id": 9, "label": "Entertainment", "href": "/entertainment" },
-  { "id": 10, "label": "Accessories", "href": "/accessories" },
-  { "id": 11, "label": "Support", "href": "/support" }
+  {
+    "id": 5,
+    "label": "Watch",
+    "href": "/watch"
+  },
+  {
+    "id": 6,
+    "label": "Vision",
+    "href": "/vision"
+  },
+  {
+    "id": 7,
+    "label": "AirPods",
+    "href": "/airpods"
+  },
+  {
+    "id": 8,
+    "label": "TV & Home",
+    "href": "/tv-home"
+  },
+  {
+    "id": 9,
+    "label": "Entertainment",
+    "href": "/entertainment"
+  },
+  {
+    "id": 10,
+    "label": "Accessories",
+    "href": "/accessories"
+  },
+  {
+    "id": 11,
+    "label": "Support",
+    "href": "/support"
+  }
 ]

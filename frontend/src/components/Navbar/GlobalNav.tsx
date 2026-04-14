@@ -1,14 +1,20 @@
-"use client";
-
 import { useQuery } from "@tanstack/react-query";
 import styles from "./Navbar.module.css";
 import Link from "next/link";
-import { useState } from "react";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
+interface SubCategory {
+  label: string;
+  href: string;
+  image: string;
+}
 
 interface SubLink {
   label: string;
   href: string;
+  subcategories?: SubCategory[];
 }
 
 interface NavLink {
@@ -20,6 +26,7 @@ interface NavLink {
 
 export default function GlobalNav() {
   const [activeId, setActiveId] = useState<number | null>(null);
+  const [hoveredSublink, setHoveredSublink] = useState<SubLink | null>(null);
   const [isLocked, setIsLocked] = useState(false);
 
   const { data: links, isLoading, isError } = useQuery<NavLink[]>({
@@ -33,10 +40,20 @@ export default function GlobalNav() {
     },
   });
 
+  const activeLink = links?.find(l => l.id === activeId);
+
+  // Set default hovered sublink when activeLink changes
+  useEffect(() => {
+    if (activeLink?.sublinks?.[0]) {
+      setHoveredSublink(activeLink.sublinks[0]);
+    } else {
+      setHoveredSublink(null);
+    }
+  }, [activeId, activeLink]);
+
   if (isLoading) return <div className={styles.globalNav}><div className={styles.loading}>Loading...</div></div>;
   if (isError) return <div className={styles.globalNav}><div className={styles.error}>Error loading navigation</div></div>;
 
-  const activeLink = links?.find(l => l.id === activeId);
   const hasSublinks = activeLink && activeLink.sublinks && activeLink.sublinks.length > 0;
 
   const handleMouseEnter = (link: NavLink) => {
@@ -51,11 +68,6 @@ export default function GlobalNav() {
   const handleMouseLeave = () => {
     if (isLocked) return;
     setActiveId(null);
-  };
-
-  const handleLinkClick = (id: number) => {
-    setActiveId(id);
-    setIsLocked(true);
   };
 
   const handleReset = () => {
@@ -74,7 +86,7 @@ export default function GlobalNav() {
             key={link.id} 
             className={styles.navItem}
             onMouseEnter={() => handleMouseEnter(link)}
-            onClick={() => link.sublinks && handleLinkClick(link.id)}
+            onClick={() => link.sublinks && setIsLocked(true)}
           >
             <Link 
               href={link.href} 
@@ -105,30 +117,53 @@ export default function GlobalNav() {
               onMouseLeave={handleMouseLeave}
             >
               <div className={styles.dropdownContent}>
-                <div className={styles.dropdownColumn}>
+                <div className={styles.dropdownColumn} style={{ flex: "0 0 250px" }}>
                   <span className={styles.columnTitle}>Shop</span>
                   {activeLink.sublinks!.map((sub, idx) => (
-                    <Link key={idx} href={sub.href} className={styles.subLink} onClick={handleReset}>
+                    <Link 
+                      key={idx} 
+                      href={sub.href} 
+                      className={`${styles.subLink} ${hoveredSublink?.label === sub.label ? styles.activeSub : ""}`}
+                      onMouseEnter={() => setHoveredSublink(sub)}
+                      onClick={handleReset}
+                    >
                       {sub.label}
                     </Link>
                   ))}
                 </div>
-                {/* ... other columns */}
-                <div className={styles.dropdownColumn}>
-                  <span className={styles.columnTitle}>Quick Links</span>
-                  <Link href="#" className={styles.secondaryLink}>Find a Store</Link>
-                  <Link href="#" className={styles.secondaryLink}>Order Status</Link>
-                  <Link href="#" className={styles.secondaryLink}>Apple Trade In</Link>
-                  <Link href="#" className={styles.secondaryLink}>Financing</Link>
-                </div>
 
-                <div className={styles.dropdownColumn}>
-                  <span className={styles.columnTitle}>Shop Special Stores</span>
-                  <Link href="#" className={styles.secondaryLink}>Certified Refurbished</Link>
-                  <Link href="#" className={styles.secondaryLink}>Education</Link>
-                  <Link href="#" className={styles.secondaryLink}>Business</Link>
-                  <Link href="#" className={styles.secondaryLink}>Veterans and Military</Link>
-                  <Link href="#" className={styles.secondaryLink}>Government</Link>
+                <div className={styles.dropdownColumn} style={{ flex: 1 }}>
+                  <span className={styles.columnTitle}>
+                    {hoveredSublink ? `Shop ${hoveredSublink.label}` : "Select a Category"}
+                  </span>
+                  
+                  {hoveredSublink?.subcategories && hoveredSublink.subcategories.length > 0 ? (
+                    <div className={styles.subcategoryGrid}>
+                      {hoveredSublink.subcategories.map((subcat, idx) => (
+                        <Link 
+                          key={idx} 
+                          href={`${hoveredSublink.href}/${subcat.href}`}
+                          className={styles.subcategoryCard}
+                          onClick={handleReset}
+                        >
+                          <div className={styles.imageWrapper}>
+                            <Image 
+                              src={subcat.image} 
+                              alt={subcat.label} 
+                              width={240} 
+                              height={135} 
+                              className={styles.subcategoryImage}
+                            />
+                          </div>
+                          <span className={styles.subcategoryLabel}>{subcat.label}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className={styles.noSubcategories}>
+                      No subcategories available
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
